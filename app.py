@@ -80,7 +80,8 @@ if st.button("Provide Feedback"):
         st.write("Thank you for your feedback!")
         # You can store the feedback in a file or database here (optional)
 
-
+#1st code to run streamlit on google colab
 !wget -q -O - ipv4.icanhazip.com
 
+#2nd code to run streamlit on google colab
 !streamlit run app.py & npx localtunnel --port 8501
