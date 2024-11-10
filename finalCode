@@ -1,3 +1,15 @@
+pandas
+streamlit
+requests
+folium
+streamlit-folium
+googletrans==4.0.0-rc1
+openpyxl
+
+
+
+
+
 import os
 import pandas as pd
 import streamlit as st
