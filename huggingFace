@@ -1,4 +1,9 @@
-requirements.txt @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+.env              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+GROQ_API_KEY=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
+
+
+requirements.txt  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 pandas
 streamlit
 requests
@@ -6,8 +11,9 @@ folium
 streamlit-folium
 openpyxl
 translate
+python-dotenv
 
-app.py @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+app.py           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 import os
 import pandas as pd
 import streamlit as st
@@ -15,6 +21,9 @@ import requests
 import folium
 from streamlit_folium import folium_static
 from translate import Translator  # Import Translator from translate library
+
+#
+from dotenv import load_dotenv
 
 # Initialize the Translator object for Urdu translation
 translator = Translator(to_lang="ur")
@@ -31,7 +40,10 @@ def get_offline_response(query):
     return "Offline mode: Information not available for your query."
 
 # Groq API settings with corrected endpoint URL
-GROQ_API_KEY = "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"  # Replace with your API Key
+
+load_dotenv()  # Load environment variables from .env file
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"  # Check if this is the correct URL
 
 # Streamlit UI for the chatbot
@@ -345,5 +357,5 @@ feedback = st.text_input("Please provide your feedback here:")
 if st.button("Submit Feedback"):
     st.write("Thank you for your feedback!")
 
-upload the pak.xlxs file @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+upload the pak.xlsx file   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
